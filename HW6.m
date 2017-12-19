@@ -1,4 +1,6 @@
 %Homework 6 
+clear
+
 fcr = 1330;
 f1 = 125:1:fcr;
 f2 = fcr:1:2000;
@@ -17,7 +19,7 @@ n = 1e-2;
 R1 = 20*log10((m1 * w1)/(2*rho*c)) - 3;
 R2 = 20*log10((m1*w2)/(2*rho*c))+5*log10(f2/fcr)+10*log10(2*n);
 R = [R1 R2];
-
+subplot(211)
 semilogx(f,R)
 title('Loss Factor vs Freq')
 xlabel('Frequency (Hz)')
@@ -38,5 +40,9 @@ R = [R1 R2];
 
 Rnew = R + 10*log10((1-w.*w/w0).*(1-w.*w/w0));
 
-hold on
+subplot(212)
 semilogx(f,Rnew)
+title('Fixed Loss Factor vs Freq')
+xlabel('Frequency (Hz)')
+ylabel('R (dB)')
+grid on;
