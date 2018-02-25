@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LineChart1ViewController">
+            <connections>
+                <outlet property="chartView" destination="Oqd-Ej-1xl" id="tSA-aU-J9W"/>
+                <outlet property="showDataSwitch" destination="TQ9-hK-je7" id="Ddc-xi-RD0"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oqd-Ej-1xl" customClass="LineChartView" customModule="Charts">
+                    <rect key="frame" x="0.0" y="152" width="375" height="424"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IeD-5L-txa">
+                    <rect key="frame" x="15" y="584" width="33" height="30"/>
+                    <state key="normal" title="AMP"/>
+                    <connections>
+                        <action selector="setAMPData:" destination="-1" eventType="touchUpInside" id="52v-JI-jVB"/>
+                    </connections>
+                </button>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TQ9-hK-je7">
+                    <rect key="frame" x="163" y="583" width="51" height="31"/>
+                    <connections>
+                        <action selector="showPlots:" destination="-1" eventType="valueChanged" id="CFk-d8-Szt"/>
+                    </connections>
+                </switch>
+            </subviews>
+            <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="Oqd-Ej-1xl" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="47" id="3NA-if-rAO"/>
+                <constraint firstItem="Oqd-Ej-1xl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="6Mc-iO-BuY"/>
+                <constraint firstAttribute="trailing" secondItem="Oqd-Ej-1xl" secondAttribute="trailing" id="mC3-xy-2CS"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <point key="canvasLocation" x="157.5" y="222.5"/>
+        </view>
+    </objects>
+</document>
