@@ -19,6 +19,8 @@ y = sin(2*pi*fc*t);
 Hy = fftshift(fft(y));
 HyPos = Hy(end/2:end);
 
+fpos = linspace(0, Fs/2, length(y)/2 + 1);
+
 %plot test signal time and freq
 figure(1)
 subplot(211)
@@ -26,7 +28,7 @@ plot(t,y)
 xlabel('Seconds')
 axis([0 0.001 -1 1])
 subplot(212)
-plot(wpos,db(abs(HyPos)))
+plot(fpos,db(abs(HyPos)))
 axis tight
 
 white = wgn(length(y),1,0);
@@ -40,7 +42,7 @@ plot(t,white)
 xlabel('Second')
 axis tight
 subplot(212)
-plot(wpos,db(abs(HwPos)))
+plot(fpos,db(abs(HwPos)))
 axis tight
 
 %generate the octave bands
@@ -54,18 +56,15 @@ for i = 1:2:20
     disp(fp)
 end
 
-%normlize fp
-fp = fp/Fs;
-
 c = zeros(2,10);
 index = zeros(2,10);
 
 %can now find the average across the bands
 for i = 1:20
-    [c(i), index(i)] = min(abs(w-fp(i)));
+    [c(i), index(i)] = min(abs(f-fp(i)));
 end
 
-avgHy = zeros(1,10);
+avgHy = zeros(1,10); %1 row and 10 columns 
 avgHw = zeros(1,10);
 
 for k = 1:10
@@ -86,20 +85,18 @@ end
 
 %try and get coefficients 
 
-b1 = fir1(50,[fp(1) fp(2)], 'stop');
-y1 = filter(b1,1,y);
-% b2
-% b3
-% b4
-% b5
-% b6
-% b7
-% b8
-% b9
-% b10
+%SEE WILL'S BOOK PAGE 186/192 FOR BPF/BSF EQUATIONS AND METHOD
+%SHOULD USE GENERIC BI-QUAD STRUCTURE
+
+%b1 = fdesign.bandpass('N,F3dB1,F3dB2', 20,fp(1),fp(2),Fs);
+
+finalSig = whiteNoiseFix(y,diffGain,fp, Fs);
+
+%y1 = filter(b1,1,white);
+%Hb1 = design(b1,'butter');
+%y1 = filter(Hb1,y);
 
 figure(3)
-plot(f,y1)
-
+plot(finalSig)
 
 
