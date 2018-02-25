@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Filter Demo View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="FilterDemoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter Demo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W9Y-VR-ZdF">
+                                <rect key="frame" x="243" y="30" width="115" height="26"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="EWb-c0-3zr">
+                                <rect key="frame" x="191" y="105" width="230" height="31"/>
+                                <connections>
+                                    <action selector="gainSliderDidChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="HwI-g2-WzT"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1.0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FoJ-1k-gcU">
+                                <rect key="frame" x="299" y="143" width="52" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Gain" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOX-D2-oAd">
+                                <rect key="frame" x="250" y="143" width="35" height="21"/>
+                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-1" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Y3S-uQ-y9C">
+                                <rect key="frame" x="191" y="246" width="230" height="31"/>
+                                <connections>
+                                    <action selector="panSliderDidChange" destination="BYZ-38-t0r" eventType="valueChanged" id="B6q-45-iNf"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ApB-cM-ICC">
+                                <rect key="frame" x="256" y="301" width="29" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E8B-jw-Kr3">
+                                <rect key="frame" x="306" y="301" width="39" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.43529412150000002" blue="0.81176471709999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="AOX-D2-oAd" secondAttribute="bottom" constant="12" id="0My-ky-TSh"/>
+                            <constraint firstItem="FoJ-1k-gcU" firstAttribute="baseline" secondItem="AOX-D2-oAd" secondAttribute="baseline" id="Cvx-3y-uew"/>
+                            <constraint firstItem="AOX-D2-oAd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="P5H-r3-SRg"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" relation="greaterThanOrEqual" secondItem="AOX-D2-oAd" secondAttribute="bottom" constant="8" id="P8b-Uh-qhz"/>
+                            <constraint firstItem="FoJ-1k-gcU" firstAttribute="baseline" secondItem="AOX-D2-oAd" secondAttribute="baseline" id="RVG-Ak-hJ4"/>
+                            <constraint firstItem="W9Y-VR-ZdF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SE2-mj-bgI"/>
+                            <constraint firstItem="FoJ-1k-gcU" firstAttribute="leading" secondItem="AOX-D2-oAd" secondAttribute="trailing" constant="8" id="TGZ-Sc-pR4"/>
+                            <constraint firstItem="W9Y-VR-ZdF" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="30" id="bR4-mb-ZOZ"/>
+                            <constraint firstItem="AOX-D2-oAd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="kyv-9U-hGY"/>
+                            <constraint firstItem="FoJ-1k-gcU" firstAttribute="leading" secondItem="AOX-D2-oAd" secondAttribute="trailing" constant="8" id="tRL-pE-ihN"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="AOX-D2-oAd" secondAttribute="bottom" priority="999" constant="228" id="xN6-Ag-fBJ"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="kyv-9U-hGY"/>
+                                <exclude reference="RVG-Ak-hJ4"/>
+                                <exclude reference="TGZ-Sc-pR4"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="constraints">
+                                <exclude reference="P5H-r3-SRg"/>
+                                <include reference="kyv-9U-hGY"/>
+                                <exclude reference="Cvx-3y-uew"/>
+                                <include reference="RVG-Ak-hJ4"/>
+                                <include reference="TGZ-Sc-pR4"/>
+                                <exclude reference="tRL-pE-ihN"/>
+                                <exclude reference="0My-ky-TSh"/>
+                                <exclude reference="P8b-Uh-qhz"/>
+                                <exclude reference="xN6-Ag-fBJ"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="gainLabel" destination="FoJ-1k-gcU" id="cMO-7B-VQt"/>
+                        <outlet property="gainSlider" destination="EWb-c0-3zr" id="bb8-Rj-uiD"/>
+                        <outlet property="panLabel" destination="E8B-jw-Kr3" id="6VN-cE-xBn"/>
+                        <outlet property="panSlider" destination="Y3S-uQ-y9C" id="Kdl-l6-m1g"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="318" y="273"/>
+        </scene>
+    </scenes>
+</document>

@@ -1,0 +1,47 @@
+So why are delegates useful?
+
+Two main reasons:
+1) Asynchronous callback
+2) Repeated callback
+
+
+1) Asynchronous callback
+
+Delegates provide a way for long-running or delayed code to "call back later"
+
+This is common for things like:
+    -Long processing jobs
+    -Network calls
+    -Event-driven calls
+
+In this example:
+(assuming the customer does not start with a full tank)
+-The customer tells the attendant to fill up the tank
+-The attendant spawns a new thread to fill the tank, then returns execution to the customer on the original thread
+-The customer continues executing the code in goGetGasFromAttendant on the first thread (i.e. starts reading a book)
+    Note in the log messages that the customer reads a book at the same time the attendant pours gas
+-When the attendant finishes (on the second thread), it "calls back" to the customer via doneFillingUp
+-The customer code (now running on the second thread) then sets the mReadyToLeave flag
+-Elsewhere in the customer code (still running on the first thread), the while loop ends and the customer drives home
+
+A note about threading:
+There is no way for the caller to implicitly know what thread it will be on when doneFillingUp is called
+In this example, the thread that executes doneFillingUp depends on the initial tank level
+If the initial tank level is 10, the attendant executes doneFillingUp immediately (does not spawn a new thread)
+If the level is < 10, the attendant spawns the second thread, and doneFillingUp is executed on that thread once the tank is full
+
+
+
+2) Repeated callback
+
+Delegates allow code to be called as necessary, whether it be 0 or many times
+
+This is common for UI elements such as UITableViews
+For example:
+    A UIViewController registers as a UITableViewDelegate
+    The tableView calls back whenever the user selects a cell in the table
+
+
+An enhancement for this project would be to add another method to CustomerDelegate:
+    -(void) updateStatus:(NSString *)message
+This would allow for the attendant to occasionally update the customer on status, i.e. "I added another gallon"
