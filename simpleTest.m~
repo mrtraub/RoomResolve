@@ -25,32 +25,25 @@ fpos = linspace(0, Fs/2, length(y)/2 + 1);
 figure(1)
 subplot(211)
 plot(t,y), title('test signal')
-xlabel('Seconds')
+xlabel('Seconds'), ylabel('dB')
 axis([0 0.001 -1 1])
 subplot(212)
 plot(fpos,db(abs(HyPos))), title('Freq Response')
-axis tight, xlabel('Frequency')
+axis tight
 
 white = wgn(length(y),1,0);
 white = white/max(white);
-Hw = fft(white);
-%Hw = fftshift(Hw);
+Hw = fftshift(fft(white));
 HwPos = Hw(end/2:end);
-HwPosAvg = zeros(1,length(HwPos));
-Avg = sum(HwPos)/length(HwPos);
-HwPosAvg(1:end) = Avg;
 
 figure(2)
 subplot(211)
 plot(t,white), title('Noise')
-xlabel('Second')
+xlabel('Second'), ylabel('dB')
 axis tight
 subplot(212)
-HwMag = mag2db(abs(HwPos));
-plot(fpos,HwMag);
 plot(fpos,db(abs(HwPos))), title('Freq Response')
-axis tight, xlabel('Frequency')
-hold on, plot(fpos,20*log10(HwPosAvg),'k','LineWidth',2)
+axis tight
 
 %generate the octave bands
 octaves = [31.25 62.5 125 250 500 1000 2000 4000 8000 16000];
@@ -104,11 +97,7 @@ finalSig = whiteNoiseFix(y,diffGain,fp, Fs);
 %y1 = filter(Hb1,y);
 
 figure(3)
-subplot(211)
 plot(t,20*log10(finalSig)), title('Resulting Signal')
 xlabel('seconds'), ylabel('dB')
-finalSpectrum = fft(finalSig,length(fpos));
-subplot(212)
-plot(fpos,db(abs(finalSpectrum))), title('Frequency Response')
-xlabel('Frequency'), ylabel('dB')
+
 
