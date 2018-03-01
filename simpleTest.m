@@ -14,11 +14,12 @@ wpos = w(end/2:end);
 %carrier frequency 
 fc = 1000;
 
-%testing 
-y = sin(2*pi*fc*t);
+%testing - brown noise
+cn = dsp.ColoredNoise('Color','brown','SamplesPerFrame',length(w));
+y = cn();
 Hy = fftshift(fft(y));
+Hy = Hy;
 HyPos = Hy(end/2:end);
-
 fpos = linspace(0, Fs/2, length(y)/2 + 1);
 
 %plot test signal time and freq
@@ -28,7 +29,7 @@ plot(t,y), title('test signal')
 xlabel('Seconds')
 axis([0 0.001 -1 1])
 subplot(212)
-plot(fpos,db(abs(HyPos))), title('Freq Response')
+semilogx(fpos,db(abs(HyPos))), title('Freq Response')
 axis tight, xlabel('Frequency')
 
 white = wgn(length(y),1,0);
@@ -48,8 +49,8 @@ axis tight
 subplot(212)
 HwMag = mag2db(abs(HwPos));
 plot(fpos,HwMag);
-plot(fpos,db(abs(HwPos))), title('Freq Response')
-axis tight, xlabel('Frequency')
+semilogx(fpos,db(abs(HwPos))), title('Freq Response')
+axis([20 20000 -10 40]), xlabel('Frequency')
 hold on, plot(fpos,20*log10(HwPosAvg),'k','LineWidth',2)
 
 %generate the octave bands
@@ -109,6 +110,8 @@ plot(t,20*log10(finalSig)), title('Resulting Signal')
 xlabel('seconds'), ylabel('dB')
 finalSpectrum = fft(finalSig,length(fpos));
 subplot(212)
-plot(fpos,db(abs(finalSpectrum))), title('Frequency Response')
-xlabel('Frequency'), ylabel('dB')
+semilogx(fpos,db(abs(finalSpectrum))), title('Frequency Response')
+xlabel('Frequency'), ylabel('dB'), axis([20 20000 -10 40])
+hold on
+semilogx(fpos,db(abs(HyPos)))
 

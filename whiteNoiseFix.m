@@ -23,16 +23,16 @@ Hb9 = design(b9,'butter');
 Hb10 = design(b10,'butter');
  
 new_y = zeros(48001,10);
-new_y(:,1) = filter(Hb1,y) + (1/20)*10^(diffGain(1));
-new_y(:,2) = filter(Hb2,y) + (1/20)*10^(diffGain(2));
-new_y(:,3) = filter(Hb3,y) + (1/20)*10^(diffGain(3));
-new_y(:,4) = filter(Hb4,y) + (1/20)*10^(diffGain(4));
-new_y(:,5) = filter(Hb5,y) + (1/20)*10^(diffGain(5));
-new_y(:,6) = filter(Hb6,y) + (1/20)*10^(diffGain(6));
-new_y(:,7) = filter(Hb7,y) + (1/20)*10^(diffGain(7));
-new_y(:,8) = filter(Hb8,y) + (1/20)*10^(diffGain(8));
-new_y(:,9) = filter(Hb9,y) + (1/20)*10^(diffGain(9));
-new_y(:,10) = filter(Hb10,y) + (1/20)*10^(diffGain(10));
+new_y(:,1) = filter(Hb1,y) + 10^(diffGain(1)/20);
+new_y(:,2) = filter(Hb2,y) + 10^(diffGain(2)/20);
+new_y(:,3) = filter(Hb3,y) + 10^(diffGain(3)/20);
+new_y(:,4) = filter(Hb4,y) + 10^(diffGain(4)/20);
+new_y(:,5) = filter(Hb5,y) + 10^(diffGain(5)/20);
+new_y(:,6) = filter(Hb6,y) + 10^(diffGain(6)/20);
+new_y(:,7) = filter(Hb7,y) + 10^(diffGain(7)/20);
+new_y(:,8) = filter(Hb8,y) + 10^(diffGain(8)/20);
+new_y(:,9) = filter(Hb9,y) + 10^(diffGain(9)/20);
+new_y(:,10) = filter(Hb10,y) + 10^(diffGain(10)/20);
  
 %now sum them all together
 new_y = new_y';
