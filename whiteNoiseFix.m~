@@ -1,4 +1,3 @@
-%%
 function finalSig = whiteNoiseFix(y, diffGain_dB, fp, Fs)
 %loop for filtering
 b1 = fdesign.bandpass('N,F3dB1,F3dB2', 20,fp(1),fp(2),Fs);
@@ -57,8 +56,5 @@ new_y10 = filter(Hb10,new_y10);
 
  
 %now sum them all together
-%new_y = new_y';
-%finalSig = sum(new_y);
-
-finalSig = new_y1 + new_y2 + new_y3 + new_y4 + new_y5 ...
-    + new_y6 + new_y7 + new_y8 + new_y9 + new_y10;
+new_y = new_y';
+finalSig = sum(new_y);
